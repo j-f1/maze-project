@@ -115,9 +115,10 @@ function toWalls(cells) {
 let svg = d3.select("svg").attr("width", 720).attr("class", "maze");
 
 var player = { x: 0, y: 0 }
+var cells;
 
 function render() {
-  const cells = create(textarea.value);
+  cells = create(textarea.value)
   console.log(cells);
   const walls = toWalls(cells);
 
@@ -145,7 +146,7 @@ function render() {
     .attr("cy", p => p.y + 0.5);
 }
 
-svg.on('keydown', event => {
+svg.on("keydown", (event) => {
   if (event.key.startsWith("Arrow")) {
     event.preventDefault();
     switch (event.key) {
