@@ -148,14 +148,12 @@ function render() {
 svg.on('keydown', event => {
   if (event.key.startsWith("Arrow")) {
     event.preventDefault();
-    let newPos = { ...player };
     switch (event.key) {
-      case "ArrowUp": newPos.y -= 1; break;
-      case "ArrowDown": newPos.y += 1; break;
-      case "ArrowLeft": newPos.x -= 1; break;
-      case "ArrowRight": newPos.x += 1; break;
+      case "ArrowUp": player.y -= 1; break;
+      case "ArrowDown": player.y += 1; break;
+      case "ArrowLeft": player.x -= 1; break;
+      case "ArrowRight": player.x += 1; break;
     }
-    player = newPos;
     render();
   }
 });
