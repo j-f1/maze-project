@@ -79,33 +79,58 @@ function assert(cond, message = "Assertion failed") {
   if (!cond) throw new TypeError(message);
 }
 
-
+// Turns cells into walls
 function toWalls(cells) {
-  const result = new Set()
+  const result = new Set();
   for (let row = 0; row < cells.length; row++) {
     for (let col = 0; col < cells[row].length; col++) {
-      const walls = []
-      const cell = cells[row][col]
+      const walls = [];
+      const cell = cells[row][col];
       if (cell.north) {
-        walls.push({ from: { row, col }, to: { row, col: col + 1 } })
+        walls.push({ from: { row, col }, to: { row, col: col + 1 } });
       }
       if (cell.south) {
-        walls.push({ from: { row: row + 1, col }, to: { row: row + 1, col: col + 1 } })
+        walls.push({
+          from: { row: row + 1, col },
+          to: { row: row + 1, col: col + 1 },
+        });
       }
       if (cell.east) {
-        walls.push({ from: { row, col: col + 1 }, to: { row: row + 1, col: col + 1 } })
+        walls.push({
+          from: { row, col: col + 1 },
+          to: { row: row + 1, col: col + 1 },
+        });
       }
       if (cell.west) {
-        walls.push({ from: { row, col }, to: { row: row + 1, col } })
+        walls.push({ from: { row, col }, to: { row: row + 1, col } });
       }
       for (const wall of walls) {
-        result.add(JSON.stringify(wall))
+        result.add(JSON.stringify(wall));
       }
     }
   }
-  return [...result].map(s => JSON.parse(s))
+  return [...result].map((s) => JSON.parse(s));
 }
 
 const cells = create(defaultMaze);
-console.log(cells);
-console.log(toWalls(cells))
+const walls = toWalls(cells);
+
+let svgHeight = cells.length;
+let svgWidth = cells[0].length;
+
+let svg = d3
+  .select("svg")
+  .attr("width", 720)
+  .attr("class", "maze")
+  .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
+
+walls.map((w) => {
+  svg
+    .append("line")
+    .attr("stroke", "black")
+    .attr("stroke-width", 0.1)
+    .attr("x1", w.from.col)
+    .attr("y1", w.from.row)
+    .attr("x2", w.to.col)
+    .attr("y2", w.to.row);
+});

@@ -6,7 +6,12 @@
   text-align: center;
 }
 
+.line {
+  stroke: black;
+  stroke-width: 0.1;
+}
+
 .maze {
-  background-color: black;
+  background-color: lightblue;
   margin: 10vh auto;
 }

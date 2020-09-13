@@ -9,21 +9,10 @@
   <body>
     <div class="container">
       <textarea></textarea>
+      <button onclick="create()">Make</button>
       <svg></svg>
     </div>
 
     <script src="./script.js" charset="utf-8"></script>
-    <script>
-      let svgWidth = 500;
-      let svgHeight = 300;
-
-      let svg = d3
-        .select("svg")
-        .attr("width", svgWidth)
-        .attr("height", svgHeight)
-        .attr("class", "maze");
-
-      let data = [1, 2, 3];
-    </script>
   </body>
 </html>
