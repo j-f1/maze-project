@@ -1,4 +1,4 @@
-const defaultMaze = `
+textarea.value = `
 597333331395397313333313b
 c6339595adccd639633b59639
 cd53286a70ac619c5333a639c
@@ -112,25 +112,26 @@ function toWalls(cells) {
   return [...result].map((s) => JSON.parse(s));
 }
 
-const cells = create(defaultMaze);
-const walls = toWalls(cells);
+let svg = d3.select("svg").attr("width", 720).attr("class", "maze");
 
-let svgHeight = cells.length;
-let svgWidth = cells[0].length;
+function render() {
+  const cells = create(textarea.value);
+  console.log(cells);
+  const walls = toWalls(cells);
 
-let svg = d3
-  .select("svg")
-  .attr("width", 720)
-  .attr("class", "maze")
-  .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
-
-walls.map((w) => {
+  let svgHeight = cells.length;
+  let svgWidth = cells[0].length;
+  svg.attr("viewBox", `-0.05 -0.05 ${svgWidth + 0.1} ${svgHeight + 0.1}`);
   svg
-    .append("line")
+    .selectAll("line")
+    .data(walls)
+    .join("line")
     .attr("stroke", "black")
     .attr("stroke-width", 0.1)
-    .attr("x1", w.from.col)
-    .attr("y1", w.from.row)
-    .attr("x2", w.to.col)
-    .attr("y2", w.to.row);
-});
+    .attr("x1", (w) => w.from.col)
+    .attr("y1", (w) => w.from.row)
+    .attr("x2", (w) => w.to.col)
+    .attr("y2", (w) => w.to.row);
+}
+textarea.addEventListener("input", render);
+render();
