@@ -2,8 +2,7 @@
   --black: #0c1713;
   --off-white: #fdfdec;
   --white: #fff;
-  --maze-bg: #e6f6ff;
-  --maze-bg-active: #abe2ff;
+  --maze-bg: #abe2ff;
 }
 
 body {
@@ -57,12 +56,6 @@ button {
   outline: none;
 }
 
-.maze:focus {
-  background-color: var(--maze-bg-active);
-  margin: auto;
-  outline: none;
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -86,9 +79,9 @@ button {
   left: -5%;
   width: 110%;
   height: 110%;
-  background: rgba(253, 253, 236, 0.25);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
+  background: rgba(253, 253, 236, 0.1);
+  -webkit-backdrop-filter: blur(3px) grayscale(50%);
+  backdrop-filter: blur(3px) grayscale(50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,6 +89,7 @@ button {
   font-weight: bold;
   pointer-events: none;
   transition: opacity 0.2s;
+  text-shadow: 0 0 20px var(--off-white);
 }
 
 .svg-wrap:focus-within::after {
