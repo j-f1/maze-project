@@ -24,11 +24,12 @@
     <p>Paste your encoded maze below and try to escape!</p>
     <p>Choose your character:</p>
     <div>
-      <input name="player" value="player_java" id="player_java" type="radio" />
-      <label for="player_java">SUV Java </label><input name="player" value="player_pyret" id="player_pyret"
-        type="radio" />
-      <label for="player_pyret">Tesla Pyret </label><input name="player" value="player_c" id="player_c" type="radio" />
+      <input onclick="render()" name="player" value="player_c" id="player_c" type="radio" checked />
       <label for="player_c">Racecar C </label>
+      <input onclick="render()" name="player" value="player_java" id="player_java" type="radio" />
+      <label for="player_java">SUV Java </label>
+      <input onclick="render()" name="player" value="player_pyret" id="player_pyret" type="radio" />
+      <label for="player_pyret">Tesla Pyret </label>
     </div>
     <br />
 

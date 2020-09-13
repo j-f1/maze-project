@@ -24,6 +24,9 @@ h2 {
   margin: 0;
 }
 
+image {
+}
+
 .navbar {
   padding: 10px 20px;
   border-bottom: 1px black dashed;
@@ -72,16 +75,18 @@ button {
 .svg-wrap {
   position: relative;
 }
+
 .svg-wrap::after {
-  content: 'Click to play';
+  content: "Click to play!";
   position: absolute;
   top: -5%;
   left: -5%;
   width: 110%;
   height: 110%;
-  background: rgba(253, 253, 236, 0.1);
   -webkit-backdrop-filter: blur(2px) grayscale(50%);
-  backdrop-filter: blur(2px) grayscale(50%);
+  background: rgba(253, 253, 236, 0.25);
+  text-shadow: #0c1713;
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,11 +94,8 @@ button {
   font-weight: bold;
   pointer-events: none;
   transition: opacity 0.2s;
-  text-shadow:
-    0 0 40px var(--off-white),
-    0 0 40px var(--off-white),
-    0 0 40px var(--off-white),
-    0 0 40px var(--off-white);
+  text-shadow: 0 0 40px var(--off-white), 0 0 40px var(--off-white),
+    0 0 40px var(--off-white), 0 0 40px var(--off-white);
 }
 
 .svg-wrap:focus-within::after {

@@ -122,7 +122,6 @@ const lineWidth = 0.15;
 
 function render() {
   cells = create(textarea.value);
-  console.log(cells);
   const walls = toWalls(cells);
 
   let svgHeight = cells.length;
@@ -146,13 +145,15 @@ function render() {
     .attr("y2", (w) => w.to.row);
 
   svg
-    .selectAll("circle")
+    .selectAll("image")
     .data([player])
-    .join("circle")
+    .join("image")
+    .attr("xlink:href", getImg())
     .attr("r", 0.25)
-    .attr("cx", (p) => p.x + 0.5)
-    .attr("cy", (p) => p.y + 0.5)
-    .style("transition", `all ${animationDuration}ms ease-out`);
+    .attr("x", (p) => p.x)
+    .attr("y", (p) => p.y)
+    .attr("style", `height: ${25 / cells[0].length}`)
+    .style("transition", "all 0.05s");
 }
 
 svg.on("keydown", (event) => {
@@ -190,7 +191,23 @@ function didWin() {
   if (player.x === cells[0].length - 1 && player.y === cells.length - 1) {
     setTimeout(() => {
       alert("You won!");
-    }, animationDuration * 1.5)
+    }, animationDuration * 1.5);
+  }
+}
+
+function getImg() {
+  const radios = Array.from(document.getElementsByName("player"))
+    .filter((x) => x.checked)
+    .map((x) => x.value);
+  switch (radios[0]) {
+    case "player_c":
+      return "./img/c.png";
+    case "player_java":
+      return "./img/java.png";
+    case "player_pyret":
+      return "./img/pyret.png";
+    default:
+      return "./img/c.png";
   }
 }
 
