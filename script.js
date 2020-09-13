@@ -114,18 +114,23 @@ function toWalls(cells) {
 
 let svg = d3.select("svg").attr("width", 720).attr("class", "maze");
 
-var player = { x: 0, y: 0 }
+var player = { x: 0, y: 0 };
 var cells;
 
 function render() {
-  cells = create(textarea.value)
+  cells = create(textarea.value);
   console.log(cells);
   const walls = toWalls(cells);
 
   let svgHeight = cells.length;
   let svgWidth = cells[0].length;
-  let lineWidth = 0.15
-  svg.attr("viewBox", `-${lineWidth / 2} -${lineWidth / 2} ${svgWidth + lineWidth} ${svgHeight + lineWidth}`);
+  let lineWidth = 0.15;
+  svg.attr(
+    "viewBox",
+    `-${lineWidth / 2} -${lineWidth / 2} ${svgWidth + lineWidth} ${
+      svgHeight + lineWidth
+    }`
+  );
   svg
     .selectAll("line")
     .data(walls)
@@ -138,12 +143,13 @@ function render() {
     .attr("x2", (w) => w.to.col)
     .attr("y2", (w) => w.to.row);
 
-  svg.selectAll("circle")
+  svg
+    .selectAll("circle")
     .data([player])
     .join("circle")
     .attr("r", 0.25)
-    .attr("cx", p => p.x + 0.5)
-    .attr("cy", p => p.y + 0.5)
+    .attr("cx", (p) => p.x + 0.5)
+    .attr("cy", (p) => p.y + 0.5)
     .style("transition", "all 0.05s");
 }
 
@@ -174,8 +180,15 @@ svg.on("keydown", (event) => {
         break;
     }
     render();
+    didWin();
   }
 });
+
+function didWin() {
+  if (player.x === cells[0].length - 1 && player.y === cells.length - 1) {
+    alert("You won!");
+  }
+}
 
 textarea.addEventListener("input", render);
 render();

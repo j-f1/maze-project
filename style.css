@@ -2,7 +2,8 @@
   --black: #0c1713;
   --off-white: #fdfdec;
   --white: #fff;
-  --maze-bg: lightblue;
+  --maze-bg: #e6f6ff;
+  --maze-bg-active: #abe2ff;
 }
 
 body {
@@ -53,6 +54,13 @@ button {
 .maze {
   background-color: var(--maze-bg);
   margin: auto;
+  outline: none;
+}
+
+.maze:focus {
+  background-color: var(--maze-bg-active);
+  margin: auto;
+  outline: none;
 }
 
 .footer {
