@@ -132,6 +132,7 @@ function render() {
       svgHeight + lineWidth
     }`
   );
+
   svg
     .selectAll("line")
     .data(walls)
@@ -149,10 +150,9 @@ function render() {
     .data([player])
     .join("image")
     .attr("xlink:href", getImg())
-    .attr("r", 0.25)
-    .attr("x", (p) => p.x)
-    .attr("y", (p) => p.y)
-    .attr("style", `height: ${25 / cells[0].length}`)
+    .attr("x", (p) => p.x + 0.1)
+    .attr("y", (p) => p.y + 0.1)
+    .attr("height", 0.8)
     .style("transition", "all 0.05s");
 }
 
