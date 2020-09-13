@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Maze Project</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-  </head>
-  <body>
-    <div class="navbar">
-      <h1>Maze!</h1>
-    </div>
 
-    <div class="container">
-      <div>
-        <label for="start_x">Start X: </label
-        ><input name="start_x" type="text" />
-        <label for="start_y">Start Y: </label
-        ><input name="start_y" , type="text" />
-      </div>
-      <br />
+<head>
+  <meta charset="utf-8" />
+  <title>Maze Project</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
 
-      <label for="encoded_maze">Encoded maze:</label>
-      <textarea id="textarea" name="encoded_maze" rows="10"></textarea>
-      <button onclick="create()">Start!</button>
-      <svg></svg>
-    </div>
+<body>
+  <div class="navbar">
+    <h1>Maze!</h1>
+  </div>
 
-    <div class="footer">
-      <a href="https://github.com/j-f1/maze-project">Source</a>
+  <div class="container">
+    <h2>Welcome to the maze!</h2>
+    <p>Paste your encoded maze below and try to escape!</p>
+    <p>Choose your character:</p>
+    <div>
+      <input name="player" value="player_java" id="player_java" type="radio" />
+      <label for="player_java">SUV Java </label><input name="player" value="player_pyret" id="player_pyret"
+        type="radio" />
+      <label for="player_pyret">Tesla Pyret </label><input name="player" value="player_c" id="player_c" type="radio" />
+      <label for="player_c">Racecar C </label>
     </div>
-    <script src="./script.js" charset="utf-8"></script>
-  </body>
+    <br />
+
+    <label for="encoded_maze">Encoded maze:</label>
+    <textarea id="textarea" name="encoded_maze" rows="12"></textarea>
+    <button onclick="create()">Start!</button>
+    <svg></svg>
+  </div>
+
+  <div class="footer">
+    <a href="https://github.com/j-f1/maze-project">Source</a>
+  </div>
+  <script src="./script.js" charset="utf-8"></script>
+</body>
+
 </html>
