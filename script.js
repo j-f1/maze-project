@@ -121,13 +121,15 @@ function render() {
 
   let svgHeight = cells.length;
   let svgWidth = cells[0].length;
-  svg.attr("viewBox", `-0.05 -0.05 ${svgWidth + 0.1} ${svgHeight + 0.1}`);
+  let lineWidth = 0.15
+  svg.attr("viewBox", `-${lineWidth / 2} -${lineWidth / 2} ${svgWidth + lineWidth} ${svgHeight + lineWidth}`);
   svg
     .selectAll("line")
     .data(walls)
     .join("line")
     .attr("stroke", "black")
-    .attr("stroke-width", 0.1)
+    .attr("stroke-width", 0.15)
+    .attr("stroke-linecap", "round")
     .attr("x1", (w) => w.from.col)
     .attr("y1", (w) => w.from.row)
     .attr("x2", (w) => w.to.col)
