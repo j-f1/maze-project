@@ -1,3 +1,4 @@
+// Set the default value of the map.
 textarea.value = `
 597333331395397313333313b
 c6339595adccd639633b50039
@@ -112,14 +113,14 @@ function toWalls(cells) {
   return [...result].map((s) => JSON.parse(s));
 }
 
+// Rendering variables.
 let svg = d3.select("svg").attr("width", 720).attr("class", "maze");
-
 var player = { x: 0, y: 0 };
 var cells;
-
 const animationDuration = 50;
 const lineWidth = 0.15;
 
+// Render the svg.
 function render() {
   cells = create(textarea.value);
   const walls = toWalls(cells);
@@ -156,6 +157,7 @@ function render() {
     .style("transition", "all 0.05s");
 }
 
+// Listener.
 svg.on("keydown", (event) => {
   if (event.key.startsWith("Arrow")) {
     event.preventDefault();
@@ -187,6 +189,7 @@ svg.on("keydown", (event) => {
   }
 });
 
+// Checks if the player won (bottom right)
 function didWin() {
   if (player.x === cells[0].length - 1 && player.y === cells.length - 1) {
     setTimeout(() => {
@@ -195,6 +198,7 @@ function didWin() {
   }
 }
 
+// Get the player image.
 function getImg() {
   const radios = Array.from(document.getElementsByName("player"))
     .filter((x) => x.checked)
@@ -211,5 +215,6 @@ function getImg() {
   }
 }
 
+// Start
 textarea.addEventListener("input", render);
 render();
