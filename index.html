@@ -4,15 +4,39 @@
     <meta charset="utf-8" />
     <title>Maze Project</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
+    <div class="navbar">
+      <h1>Maze!</h1>
+    </div>
+
     <div class="container">
-      <textarea></textarea>
-      <button onclick="create()">Make</button>
+      <div>
+        <label for="start_x">Start X: </label
+        ><input name="start_x" type="text" />
+        <label for="start_y">Start Y: </label
+        ><input name="start_y" , type="text" />
+      </div>
+      <br />
+
+      <label for="encoded_maze">Encoded maze:</label>
+      <textarea name="encoded_maze" rows="10"></textarea>
+      <button onclick="create()">Start!</button>
       <svg></svg>
     </div>
 
+    <div class="footer">
+      <a href="https://github.com/j-f1/maze-project">Source</a>
+    </div>
     <script src="./script.js" charset="utf-8"></script>
   </body>
 </html>

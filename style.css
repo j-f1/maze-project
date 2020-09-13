@@ -1,17 +1,56 @@
+:root {
+  --black: #0c1713;
+  --off-white: #fdfdec;
+  --white: #fff;
+  --maze-bg: lightblue;
+}
+
+body {
+  background-color: var(--off-white);
+  font-family: "Josefin Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: "Josefin Slab", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.navbar {
+  padding: 10px 20px;
+  border-bottom: 1px black dashed;
+}
+
 .container {
   max-width: 720px;
   margin: auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  text-align: center;
 }
 
-.line {
-  stroke: black;
-  stroke-width: 0.1;
+button {
+  margin: 20px 0;
+  padding: 5px;
 }
 
 .maze {
-  background-color: lightblue;
-  margin: 10vh auto;
+  background-color: var(--maze-bg);
+  margin: auto;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 20px;
+  background-color: var(--black);
+}
+
+.footer a {
+  color: var(--white);
 }
