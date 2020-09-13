@@ -117,6 +117,9 @@ let svg = d3.select("svg").attr("width", 720).attr("class", "maze");
 var player = { x: 0, y: 0 };
 var cells;
 
+const animationDuration = 50;
+const lineWidth = 0.15;
+
 function render() {
   cells = create(textarea.value);
   console.log(cells);
@@ -124,7 +127,6 @@ function render() {
 
   let svgHeight = cells.length;
   let svgWidth = cells[0].length;
-  let lineWidth = 0.15;
   svg.attr(
     "viewBox",
     `-${lineWidth / 2} -${lineWidth / 2} ${svgWidth + lineWidth} ${
@@ -150,7 +152,7 @@ function render() {
     .attr("r", 0.25)
     .attr("cx", (p) => p.x + 0.5)
     .attr("cy", (p) => p.y + 0.5)
-    .style("transition", "all 0.05s");
+    .style("transition", `all ${animationDuration}ms ease-out`);
 }
 
 svg.on("keydown", (event) => {
@@ -186,7 +188,9 @@ svg.on("keydown", (event) => {
 
 function didWin() {
   if (player.x === cells[0].length - 1 && player.y === cells.length - 1) {
-    alert("You won!");
+    setTimeout(() => {
+      alert("You won!");
+    }, animationDuration * 1.5)
   }
 }
 
