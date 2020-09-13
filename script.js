@@ -143,17 +143,35 @@ function render() {
     .join("circle")
     .attr("r", 0.25)
     .attr("cx", p => p.x + 0.5)
-    .attr("cy", p => p.y + 0.5);
+    .attr("cy", p => p.y + 0.5)
+    .style("transition", "all 0.05s");
 }
 
 svg.on("keydown", (event) => {
   if (event.key.startsWith("Arrow")) {
     event.preventDefault();
+    const room = cells[player.y][player.x];
     switch (event.key) {
-      case "ArrowUp": player.y -= 1; break;
-      case "ArrowDown": player.y += 1; break;
-      case "ArrowLeft": player.x -= 1; break;
-      case "ArrowRight": player.x += 1; break;
+      case "ArrowUp":
+        if (!room.north) {
+          player.y -= 1;
+        }
+        break;
+      case "ArrowDown":
+        if (!room.south) {
+          player.y += 1;
+        }
+        break;
+      case "ArrowLeft":
+        if (!room.west) {
+          player.x -= 1;
+        }
+        break;
+      case "ArrowRight":
+        if (!room.east) {
+          player.x += 1;
+        }
+        break;
     }
     render();
   }
