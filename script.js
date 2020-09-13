@@ -8,7 +8,7 @@ ce5a632bc5a5ac61b4ac5a738
 cd5396accccdc58cc5239c6ac
 cccd633accc4aec6a639cc59c
 68c43339cccc5949719cc6acc
-7a6a7332a6a6a6a63a6a633ae`.trim();
+7a6a7332a6a6a6a63a6a633a6`.trim();
 
 // Creates a Maze, which is a 2D array of Wall Objects.
 function create(input) {
@@ -114,6 +114,8 @@ function toWalls(cells) {
 
 let svg = d3.select("svg").attr("width", 720).attr("class", "maze");
 
+var player = { x: 0, y: 0 }
+
 function render() {
   const cells = create(textarea.value);
   console.log(cells);
@@ -134,6 +136,27 @@ function render() {
     .attr("y1", (w) => w.from.row)
     .attr("x2", (w) => w.to.col)
     .attr("y2", (w) => w.to.row);
+
+  svg.selectAll("circle")
+    .data([player])
+    .join("circle")
+    .attr("r", 0.25)
+    .attr("cx", p => p.x + 0.5)
+    .attr("cy", p => p.y + 0.5);
 }
+
+svg.on('keydown', event => {
+  if (event.key.startsWith("Arrow")) {
+    event.preventDefault();
+    switch (event.key) {
+      case "ArrowUp": player.y -= 1; break;
+      case "ArrowDown": player.y += 1; break;
+      case "ArrowLeft": player.x -= 1; break;
+      case "ArrowRight": player.x += 1; break;
+    }
+    render();
+  }
+});
+
 textarea.addEventListener("input", render);
 render();
