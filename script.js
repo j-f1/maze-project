@@ -79,4 +79,33 @@ function assert(cond, message = "Assertion failed") {
   if (!cond) throw new TypeError(message);
 }
 
-console.log(create(defaultMaze));
+
+function toWalls(cells) {
+  const result = new Set()
+  for (let row = 0; row < cells.length; row++) {
+    for (let col = 0; col < cells[row].length; col++) {
+      const walls = []
+      const cell = cells[row][col]
+      if (cell.north) {
+        walls.push({ from: { row, col }, to: { row, col: col + 1 } })
+      }
+      if (cell.south) {
+        walls.push({ from: { row: row + 1, col }, to: { row: row + 1, col: col + 1 } })
+      }
+      if (cell.east) {
+        walls.push({ from: { row, col: col + 1 }, to: { row: row + 1, col: col + 1 } })
+      }
+      if (cell.west) {
+        walls.push({ from: { row, col }, to: { row: row + 1, col } })
+      }
+      for (const wall of walls) {
+        result.add(JSON.stringify(wall))
+      }
+    }
+  }
+  return [...result].map(s => JSON.parse(s))
+}
+
+const cells = create(defaultMaze);
+console.log(cells);
+console.log(toWalls(cells))
