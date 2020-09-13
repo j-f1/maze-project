@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Maze Project</title>
+    <link rel="stylesheet" href="./style.css" />
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
+    <div class="container">
+      <textarea></textarea>
+      <svg></svg>
+    </div>
+
     <script src="./script.js" charset="utf-8"></script>
+    <script>
+      let svgWidth = 500;
+      let svgHeight = 300;
+
+      let svg = d3
+        .select("svg")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight)
+        .attr("class", "maze");
+
+      let data = [1, 2, 3];
+    </script>
   </body>
 </html>

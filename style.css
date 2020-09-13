@@ -1,0 +1,12 @@
+.container {
+  max-width: 720px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.maze {
+  background-color: black;
+  margin: 10vh auto;
+}
